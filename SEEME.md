@@ -1,5 +1,5 @@
 # SECRET DIARY
-# This is a complete web app involving user log in, database connectivity, session variable etc. wit usual HTML,CSS,jQuery.
+# This is a complete web app involving user log in, database connectivity, session variable etc. with usual HTML,CSS,jQuery.
 ## The idea of App is to give personal space to users to store their thoughts or secrets from others.
 ## Highlights
 ### 1. Create your own account and decide to stay logged in for a while.(Use of session variables and cookies.)
