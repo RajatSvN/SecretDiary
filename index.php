@@ -37,7 +37,7 @@ if(!$_POST['email'])
         if(!mysqli_query($link,$query)){
           $error = "<p>Could not sign you up.Sorry for the inconvinience! Please try again later.</p>";
         }else{
-          $query = "UPDATE UserDiary SET password = '".md5(md5(mysqli_insert_id($link)).$_POST['password'])."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
+          $query = "UPDATE UserDiary SET password = '".password_hash(password_hash(mysqli_insert_id($link),PASSWORD_DEFAULT).$_POST['password'],PASSWORD_DEFAULT)."' WHERE id = ".mysqli_insert_id($link)." LIMIT 1";
           $_SESSION['id'] = mysqli_insert_id($link);
           mysqli_query($link,$query);
           
@@ -74,7 +74,7 @@ if(!$_POST['email'])
         $res = mysqli_query($link,$query);
         $row = mysqli_fetch_array($res);
         if(isset($row)){
-          $hashedPassword = md5(md5($row['id']).$_GET['password2']) ;
+          $hashedPassword = password_hash(password_hash($row['id'],PASSWORD_DEFAULT).$_GET['password2'],PASSWORD_DEFAULT) ;
           if($hashedPassword == $row['password']){
             $_SESSION['id']=$row['id'];
             if(isset($_POST['cbx'])){
